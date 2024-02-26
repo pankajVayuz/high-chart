@@ -6,6 +6,7 @@ import SolarEmploymentChart from './components/SolarEmploymentChart ';
 import TimelineChart from './components/TimelineChart ';
 import StockChartComponent from './components/StockChartComponent ';
 import IntradayStockChart from './components/IntradayStockChart ';
+import MaxPainChart from './components/MaxPainChart ';
 
 
 
@@ -22,6 +23,8 @@ function App() {
   <TimelineChart/>
   <StockChartComponent/>
   <IntradayStockChart/>
+  <MaxPainChart/>
+  
 
 </div>
    </>
