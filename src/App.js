@@ -5,6 +5,7 @@ import ColumnChart from './components/ColumnChart';
 import SolarEmploymentChart from './components/SolarEmploymentChart ';
 import TimelineChart from './components/TimelineChart ';
 import StockChartComponent from './components/StockChartComponent ';
+import IntradayStockChart from './components/IntradayStockChart ';
 
 
 
@@ -20,8 +21,7 @@ function App() {
   <ColumnChart/>
   <TimelineChart/>
   <StockChartComponent/>
- 
- 
+  <IntradayStockChart/>
 
 </div>
    </>
