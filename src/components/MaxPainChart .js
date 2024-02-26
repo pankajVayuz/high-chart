@@ -48,12 +48,12 @@ const MaxPainChart = () => {
       {
         name: 'Put Options Data',
         type: 'line', // Use line chart type
-        data: maxPainData[0].putData, // Example data for the first expiry
+        data: maxPainData[0]?.putData, // Example data for the first expiry
       },
       {
         name: 'Call Options Data',
         type: 'line', // Use line chart type
-        data: maxPainData[0].callData, // Example data for the first expiry
+        data: maxPainData[0]?.callData, // Example data for the first expiry
       },
     ],
   };
