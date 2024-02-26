@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+
+
+import LineChart from './components/LineChart';
+import ColumnChart from './components/ColumnChart';
+import SolarEmploymentChart from './components/SolarEmploymentChart ';
+import TimelineChart from './components/TimelineChart ';
+import StockChartComponent from './components/StockChartComponent ';
+
+
 
 function App() {
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+    <h1 className="text-red-500 text-center text-3xl mt-4">Dashboard</h1>
+    <div className='flex flex-col gep-4'>
+  <LineChart/>
+  <SolarEmploymentChart />
+  <ColumnChart/>
+  <TimelineChart/>
+  <StockChartComponent/>
+ 
+ 
+
+</div>
+   </>
   );
 }
 
