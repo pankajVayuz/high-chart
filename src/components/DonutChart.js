@@ -34,7 +34,8 @@ const DonutChart = ({ availableMargin, marginUsed, withdrawal }) => {
         data: [
           { name: 'Available Margin', y: availableMargin },
           { name: 'Margin Used', y: marginUsed },
-          { name: 'Withdrawal', y: parseFloat(percentage), color: 'red' } // Set withdrawal percentage as data point and color it red
+          { name: 'Withdrawal', y: parseFloat(percentage) }, // Include withdrawal percentage as data point
+          { name: 'Withdrawal Value', y: withdrawal, color: 'red' } // Include withdrawal value as data point and color it red
         ]
       }]
     });

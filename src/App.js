@@ -22,7 +22,7 @@ function App() {
   <SolarEmploymentChart />
   <DonutChart
   availableMargin={11000000}
-  marginUsed={110000}
+  marginUsed={80000}
   withdrawal={10920000}
 />
   {/* <StockChartComponent/> */}
