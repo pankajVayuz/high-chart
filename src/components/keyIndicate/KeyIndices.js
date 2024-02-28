@@ -31,20 +31,14 @@ const KeyIndices = () => {
 
   const nifty50Data = generateDummyData();
 
-  setInterval(function() {
+  setInterval(function(){
     const newData = generateDummyData();
-    // Update nifty50Data with newData
-    // For example, if generateDummyData() returns an array, you might want to push newData to nifty50Data
-    nifty50Data.push(newData);
+    
+    // nifty50Data.push(newData);
     setData(newData);
     console.log("New data generated:", newData);
 }, 5000);
 
-  useEffect(() => {
-    if (nifty50Data) {
-      setData(nifty50Data);
-    }
-  }, []);
 
   console.log("nifty 50 data", data);
 
