@@ -45,6 +45,7 @@ const LineChart = ({ rate, chartData }) => {
         fontSize: '8px',
         padding: '2px',
       },
+      backgroundColor: 'rgba(255, 255, 255, 0)',
       width: 36, // Adjust tooltip width as needed
       height: 36, // Adjust tooltip height as needed
     },
