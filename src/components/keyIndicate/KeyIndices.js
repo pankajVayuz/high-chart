@@ -129,15 +129,19 @@ const KeyIndices = () => {
     return dummyData;
   };
 
-  const nifty50Data = generateDummyData();
-
-  setInterval(function(){
-    const newData = generateDummyData();
-    
-    // nifty50Data.push(newData);
-    setData(newData);
-    console.log("New data generated:", newData);
-}, 5000);
+  useEffect(() => {
+    const intervalID = setInterval(function(){
+      const newData = generateDummyData();
+      
+      // nifty50Data.push(newData); // Avoid mutating state directly
+      setData(newData); // Set the new data using setState
+      console.log("New data generated:", newData);
+    }, 3000);
+  
+    // Clear the interval when the component unmounts or when the dependency array changes
+    return () => clearInterval(intervalID);
+  }, []); // Empty dependency array means this effect runs once after the initial render
+  
 
 
   console.log("nifty 50 data", data);
