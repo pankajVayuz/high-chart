@@ -2,46 +2,51 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-const LineChart = ({rate,chartData}) => {
-  // Define the rate
-//   const rate = 600; // Change this to your desired rate
-
-
-  const color =  rate<0 ? 'red' : 'green';
+const LineChart = ({ rate, chartData }) => {
+  const color = rate < 0 ? 'red' : 'green';
 
   const options = {
     chart: {
       type: 'line',
-      height: 64, // Set the height to 64px
-      width: 64, // Set the width to 64px
+      height: 70,
+      width: 100,
     },
     title: {
-      text: null, // Hide the chart title
+      text: null,
     },
     xAxis: {
-      visible: false, // Hide the x-axis
+      visible: false,
     },
     yAxis: {
-      visible: false, // Hide the y-axis
+      visible: false,
     },
     legend: {
-      enabled: false, // Hide the legend
+      enabled: false,
     },
     credits: {
-      enabled: false // Hide the Highcharts logo
+      enabled: false,
     },
     plotOptions: {
       series: {
         marker: {
-          enabled: false, // Hide data markers
-        },shadow: {
-          color: 'rgba(0,0,0,0.3)', // Shadow color
-          offsetX: 1, // Horizontal offset
-          offsetY: 1, // Vertical offset
-          opacity: 0.8, // Shadow opacity
-          width: 10 // Shadow width
-        }
+          enabled: false,
+        },
+        shadow: {
+          color: 'rgba(0,0,0,0.3)',
+          offsetX: 1,
+          offsetY: 1,
+          opacity: 0.8,
+          width: 10,
+        },
       },
+    },
+    tooltip: {
+      style: {
+        fontSize: '8px',
+        padding: '2px',
+      },
+      width: 36, // Adjust tooltip width as needed
+      height: 36, // Adjust tooltip height as needed
     },
     series: [{
       data: chartData,
