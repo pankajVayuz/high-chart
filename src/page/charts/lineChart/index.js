@@ -70,13 +70,13 @@ const Nifty50Chart = () => {
     series: [ {
       name: 'PCR',
       data: pcrData,
-      color: 'skyblue', // PCR series color
-      yAxis: 0 // Corresponds to the second y-axis
+      color: 'skyblue',
+      yAxis: 0 
     },{
       name: 'Nifty 50',
       data: niftyData,
-      color: 'lightpink', // Nifty 50 series color
-      yAxis: 1 // Corresponds to the first y-axis
+      color: 'lightpink', 
+      yAxis: 1 
     }],
     credits: {
       enabled: false
