@@ -5,6 +5,7 @@ import ChartContainer from "./container/chartContainer";
 import { routes } from "./routes";
 import GridContainer from "./container/gridContainer";
 import NotFound from "./page/notFound";
+import UserContainer from "./container/usersContainer";
 
 const RouterConfig = () => {
   return (
@@ -15,6 +16,7 @@ const RouterConfig = () => {
         })}
         <Route path={"/charts/*"} element={<ChartContainer />} />
         <Route path={"/grids/*"} element={<GridContainer/>} />
+        <Route path={"/users/*"} element={<UserContainer/>} />
         <Route path={"*"} element={<NotFound/>} />
       </Routes>
     </BrowserRouter>

@@ -10,11 +10,11 @@ TopBarProgress.config({
   shadowBlur: 10
 });
 
-const LazyLoadingHOC = (importFunc) => {
+const LazyLoadingHOC = (importFunc,fallback = null) => {
   const LazyComponent = lazy(importFunc);
 
   const LazyWrapper = (props) => (
-    <Suspense fallback={<TopBarProgress />}>
+    <Suspense fallback={fallback?fallback:<TopBarProgress />}>
       <LazyComponent {...props} />
     </Suspense>
   );

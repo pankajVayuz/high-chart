@@ -25,6 +25,13 @@ const Dashboard = () => {
             <p className="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a eros nec leo efficitur dapibus.</p>
           </div>
         </Link>
+        <Link to="/users/userslist" className="bg-white shadow-md rounded-md p-6 hover:bg-gray-100 block">
+          <h2 className="text-xl font-semibold text-gray-700 mb-4">Users</h2>
+          <div className="bg-gray-200 rounded-md p-4">
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">Users</h3>
+            <p className="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a eros nec leo efficitur dapibus.</p>
+          </div>
+        </Link>
       </div>
     </div>
   );
