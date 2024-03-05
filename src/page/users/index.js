@@ -7,11 +7,10 @@ const chance = new Chance();
 function generateUsers(count, offset) {
     const users = [];
     for (let i = 0; i < count; i++) {
-        const id = +offset + i; // Calculate the id based on the offset
-        const name = chance.name();
+        const id = +offset + i; 
         const email = chance.email();
         const address = chance.address();
-        const avatar = chance.avatar({ protocol: 'https' }); // Generate avatar image link
+        const avatar = chance.avatar({ protocol: 'https' }); 
         users.push({ id, name, email, address, avatar });
     }
     return users;
@@ -45,7 +44,7 @@ function UserList() {
             const newUsers = generateUsers(50, lastId); // Load additional 50 users starting from the last id
             setUserList(prevUsers => [...prevUsers, ...newUsers]);
             setLoading(false);
-        }, 2000); // Simulating a delay
+        }, 2000); 
     };
 
     const handleDeleteUser = (id) => {
