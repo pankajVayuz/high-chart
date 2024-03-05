@@ -1,29 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import Chance from 'chance';
 import Shimmer from '../../components/shimmer';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUserListState } from '../../reducers/slices/userSlice';
 
 const chance = new Chance();
 
 function generateUsers(count, offset) {
     const users = [];
     for (let i = 0; i < count; i++) {
-        const id = +offset + i; 
+        const id = +offset + i; // Calculate the id based on the offset
         const name = chance.name();
         const email = chance.email();
         const address = chance.address();
-        const avatar = chance.avatar({ protocol: 'https' }); 
+        const avatar = chance.avatar({ protocol: 'https' }); // Generate avatar image link
         users.push({ id, name, email, address, avatar });
     }
     return users;
 }
 
 function UserList() {
+
     const [userList, setUserList] = useState([]);
     const [loading, setLoading] = useState(false);
+    const userListState = useSelector(state => state.user.userList);
+    // const loading = useSelector(state => state.user.loading);
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         loadMoreUsers();
     }, []);
+    useEffect(() => {
+        dispatch(setUserListState(userList))
+    console.log("check state data",userListState)
+
+    }, [userList]);
+
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,10 +56,11 @@ function UserList() {
         setLoading(true);
         setTimeout(() => {
             const lastId = userList.length > 0 ? userList[userList.length - 1].id + 1 : 0;
-            const newUsers = generateUsers(50, lastId); // Load additional 50 users starting from the last id
+            const newUsers = generateUsers(10, lastId); // Load additional 50 users starting from the last id
             setUserList(prevUsers => [...prevUsers, ...newUsers]);
+          
             setLoading(false);
-        }, 2000); 
+        }, 2000); // Simulating a delay
     };
 
     const handleDeleteUser = (id) => {
@@ -75,7 +90,7 @@ function UserList() {
     return (
         <div className="p-4">
             <div className="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                {userList.map((user, index) => (
+                {userListState.map((user, index) => (
                     <div key={user.id}
                         className="bg-white shadow-md p-4 rounded-md relative"
                         draggable
