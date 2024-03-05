@@ -54,7 +54,7 @@ function UserList() {
            
             const updatedUsers = prevUsers.filter(user => user.id !== id);
             
-            // Update the id property for each user to maintain consecutive indices
+            
             return updatedUsers.map((user, index) => ({ ...user, id: index }));
         });
     };
