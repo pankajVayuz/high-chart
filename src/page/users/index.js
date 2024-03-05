@@ -8,6 +8,7 @@ function generateUsers(count, offset) {
     const users = [];
     for (let i = 0; i < count; i++) {
         const id = +offset + i; 
+        const name = chance.name();
         const email = chance.email();
         const address = chance.address();
         const avatar = chance.avatar({ protocol: 'https' }); 
