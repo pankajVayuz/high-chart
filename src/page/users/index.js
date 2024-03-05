@@ -25,6 +25,19 @@ function UserList() {
         loadMoreUsers();
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+                if (!loading) {
+                    loadMoreUsers();
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [loading]);
+
     const loadMoreUsers = () => {
         setLoading(true);
         setTimeout(() => {
