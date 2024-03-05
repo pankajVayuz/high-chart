@@ -51,7 +51,7 @@ function UserList() {
 
     const handleDeleteUser = (id) => {
         setUserList(prevUsers => {
-            // Filter out the deleted user
+           
             const updatedUsers = prevUsers.filter(user => user.id !== id);
             
             // Update the id property for each user to maintain consecutive indices
