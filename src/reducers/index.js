@@ -6,7 +6,7 @@ import userReducer from '../reducers/slices/userSlice';
 
 const rootReducer = combineReducers({
 
-  user:userReducer,
+  user:userReducer
   // Add other reducers if any
 });
 
