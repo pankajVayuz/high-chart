@@ -80,9 +80,9 @@ const KeyIndices = () => {
     const currentDate = new Date();
     const dummyData = [];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 20; i++) {
       const chartData = [];
-      for (let j = 0; j < 7; j++) {
+      for (let j = 0; j < 8; j++) {
         chartData.push(Math.random() * 10000);
       }
 
@@ -98,10 +98,13 @@ const KeyIndices = () => {
 
     return dummyData;
   };
+  function sortByIndexValue(data) {
+    return data.sort((a, b) => parseFloat(b.indexValue) - parseFloat(a.indexValue));
+}
 
   useEffect(() => {
     const intervalID = setInterval(function () {
-      const newData = generateDummyData();
+      const newData =sortByIndexValue(generateDummyData());
 
       setData(newData);
       console.log("New data generated:", newData);
