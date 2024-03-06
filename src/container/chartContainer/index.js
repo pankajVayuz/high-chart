@@ -7,7 +7,7 @@ import ChartNavbar from "../../components/navbar/ChartNavbar";
 import NotFound from "../../page/notFound";
 
 const ChartContainer = () => {
-  const Chart1 = LazyLoadingHOC(() => import("../../page/charts/keyIndicate/KeyIndices"));
+  const Chart1 = LazyLoadingHOC(() => import("../../page/charts/livescoreboard"));
 
 
   return (
@@ -22,7 +22,7 @@ const ChartContainer = () => {
                 <Route key={el.path} path={el.path} element={<el.element />} />
               );
             })}
-            <Route index="charts/chart1" element={<Chart1 />} />
+            <Route index="charts/scoreboard" element={<Chart1 />} />
             <Route path="*" element={<NotFound/>} />
                    
           </Routes>
