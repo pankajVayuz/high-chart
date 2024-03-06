@@ -26,6 +26,7 @@ const parties = [
 
 const LiveVoteScoreboard = () => {
     const [partyVotes, setPartyVotes] = useState(parties);
+    const progressBarColors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff8000', '#8000ff', '#0080ff', '#80ff00', '#008000', '#800000', '#000080', '#808080', '#ff8080', '#80ff80', '#8080ff', '#ffff80', '#ff80ff'];
 
     // Function to simulate live vote updates
     useEffect(() => {
@@ -50,7 +51,7 @@ const LiveVoteScoreboard = () => {
 
     const animateSorting = (oldPartyVotes, newPartyVotes) => {
         const animations = [];
-    
+
         // Compare new votes with old votes and find indices to animate
         for (let i = 0; i < newPartyVotes.length; i++) {
             const oldIndex = oldPartyVotes.findIndex(p => p.id === newPartyVotes[i].id);
@@ -58,22 +59,24 @@ const LiveVoteScoreboard = () => {
                 animations.push({ oldIndex, newIndex: i });
             }
         }
-    
+
         // Animate the swapping
-        animations.forEach(animation => {
+        animations.forEach((animation, index) => {
             const { oldIndex, newIndex } = animation;
             const item = document.getElementById(`party-${newPartyVotes[newIndex].id}`);
             const offset = (newIndex - oldIndex) * item.offsetHeight; // Calculate offset based on the new index
-           
+
+            // Add delay to each subsequent row based on its index
+            const delay = index * 0.5;
+
             item.style.transform = `translateY(${offset}px)`;
-            item.style.transition = 'transform 1s';
+            item.style.transition = `transform 1s ${delay}s`;
             setTimeout(() => {
                 item.style.transform = 'translateY(0)';
                 item.style.transition = 'transform 0.5s';
-            }, 1000);
+            }, (1000 + delay * 1000));
         });
     };
-    
 
     return (
         <div className="container mx-auto py-8">
@@ -87,7 +90,7 @@ const LiveVoteScoreboard = () => {
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                    {partyVotes.map(party => (
+                    {partyVotes.map((party, index) => (
                         <tr key={party.id} id={`party-${party.id}`}>
                             <td className="px-6 py-4 whitespace-nowrap">
                                 <div className="flex items-center">
@@ -98,13 +101,12 @@ const LiveVoteScoreboard = () => {
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                                 <div className="h-2 bg-gray-200 rounded overflow-hidden">
-                                    <div className="h-full bg-blue-500" style={{ width: `${(party.votes / 200) * 10}%` }}></div>
+                                    <div className="h-full bg-blue-500" style={{ width: `${(party.votes / 200) * 10}%`, backgroundColor: progressBarColors[index % progressBarColors.length] }}></div>
                                 </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                                 <div className="text-gray-900">{party.votes} votes</div>
                             </td>
-                          
                         </tr>
                     ))}
                 </tbody>
@@ -114,5 +116,4 @@ const LiveVoteScoreboard = () => {
 };
 
 
-
-  export default LiveVoteScoreboard;
+export default LiveVoteScoreboard;
