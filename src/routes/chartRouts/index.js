@@ -8,6 +8,7 @@ const Chart5 = LazyLoadingHOC(() => import("../../page/charts/intradayStockChart
 const Chart6 = LazyLoadingHOC(() => import("../../page/charts/lineChart"));
 const Chart7 = LazyLoadingHOC(() => import("../../page/charts/stockChart"));
 const Chart8 = LazyLoadingHOC(() => import("../../page/charts/solarEmploymentChart"));
+const Chart9 = LazyLoadingHOC(() => import("../../page/charts/livescoreboard"));
 
 const chartRoutes = [
   {
@@ -41,6 +42,10 @@ const chartRoutes = [
   {
     path: "/chart8",
     element: Chart8,
+  },
+  {
+    path: "/scoreboard",
+    element: Chart9,
   },
 
  ,

@@ -7,6 +7,8 @@ const ChartNavbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white text-lg font-semibold">Dashboard</Link>
         <div className="hidden md:flex space-x-4">
+        <Link to="/charts/scoreboard" className="text-white hover:text-gray-300">Score Board</Link>
+
           <Link to="/charts/chart1" className="text-white hover:text-gray-300">Chart 1</Link>
           <Link to="/charts/chart2" className="text-white hover:text-gray-300">Chart 2</Link>
           <Link to="/charts/chart3" className="text-white hover:text-gray-300">Chart 3</Link>
