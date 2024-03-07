@@ -40,7 +40,6 @@ function UserList() {
 
     // dispatch(resetUserCheck())
   }, []);
-  console.log("check state data", userListState, userCheck, userList);
 
   useEffect(() => {
     if (userCheck) {

@@ -8,7 +8,6 @@ const MaxPainChart = () => {
 for (let i = 16050; i <= 18250; i += 100) {
   sequenceArray.push(i);
 }
-console.log(sequenceArray);
 
   // Sample data for demonstration
   // const strikePrices = ['36000', '36100', '36200', '36300', '36400', '36500','36600','36700','36800','36900','40000'];

@@ -22,11 +22,7 @@ const parties = [
 ];
 
 const LiveVoteScoreboard = () => {
-    // const parties = [
-    //   { id: 1, name: 'Party A', votes: 100 },
-    //   { id: 2, name: 'Party B', votes: 150 },
-    //   // Add more parties as needed
-    // ];
+    
   
     const [partyVotes, setPartyVotes] = useState(parties);
     const [sortedPartyVotes, setSortedPartyVotes] = useState(parties); // New state for sorted data

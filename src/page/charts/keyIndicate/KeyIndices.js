@@ -45,7 +45,6 @@ const KeyIndices = () => {
     const intervalID = setInterval(function () {
       const newData = generateDummyData();
       setData(newData);
-      console.log("New data generated and sorted:", newData);
     }, 3000);
 
     return () => clearInterval(intervalID);
