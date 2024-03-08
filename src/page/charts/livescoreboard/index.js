@@ -26,7 +26,9 @@ const LiveVoteScoreboard = () => {
   
     const [partyVotes, setPartyVotes] = useState(parties);
     const [sortedPartyVotes, setSortedPartyVotes] = useState(parties); // New state for sorted data
-    const [sortingActive, setSortingActive] = useState(false);
+    const [sortedPartyVotesLowToHigh, setSortedPartyVotesLowToHigh] = useState(parties); // New state for sorted data
+    const [highToLowActive, setHighToLowActive] = useState(false);
+    const [lowToHighActive, setLowToHighActive] = useState(false);
     const progressBarColors = [
       "#ff0000",
       "#00ff00",
@@ -58,22 +60,31 @@ const LiveVoteScoreboard = () => {
         setPartyVotes(updatedPartyVotes);
   
         // Update sortedPartyVotes if sorting is active
-        if (sortingActive) {
+        if (highToLowActive) {
           const sortedVotes = [...updatedPartyVotes].sort((a, b) => b.votes - a.votes);
           setSortedPartyVotes(sortedVotes);
+        }
+        if (lowToHighActive) {
+          const sortedVotes = [...updatedPartyVotes].sort((a, b) => a.votes - b.votes);
+          setSortedPartyVotesLowToHigh(sortedVotes);
         }
       }, 500);
   
       return () => {
         clearInterval(dataUpdateInterval);
       };
-    }, [partyVotes, sortingActive]);
+    }, [partyVotes, highToLowActive,lowToHighActive]);
   
-    const toggleSorting = () => {
-      setSortingActive(!sortingActive);
+    const toggleSortingHighToLow = () => {
+      setHighToLowActive(!highToLowActive);
+      setLowToHighActive(false);
+    };
+    const toggleSortingLowToHigh = () => {
+      setLowToHighActive(!lowToHighActive);
+      setHighToLowActive(false);
     };
   
-    const votesData = sortingActive ? sortedPartyVotes : partyVotes; // Decide which data to render
+    const votesData = highToLowActive ? sortedPartyVotes:lowToHighActive?sortedPartyVotesLowToHigh:partyVotes; // Decide which data to render
   
     return (
       <div className="container mx-auto py-8">
@@ -81,12 +92,20 @@ const LiveVoteScoreboard = () => {
 
      <h2 className="text-2xl font-bold mb-4">Live Vote Scoreboard</h2>
         <button
-  onClick={toggleSorting}
+  onClick={toggleSortingHighToLow}
   className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
-    sortingActive ? "bg-red-500 hover:bg-red-700" : ""
+    highToLowActive ? "bg-red-500 hover:bg-red-700" : ""
   }`}
 >
-  {sortingActive ? "Stop Sorting" : "Start Sorting"}
+  {highToLowActive ? " High to Low Stop Sorting" : "High to Low Start Sorting"}
+</button>
+        <button
+  onClick={toggleSortingLowToHigh}
+  className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${
+    lowToHighActive ? "bg-red-500 hover:bg-red-700" : ""
+  }`}
+>
+  {lowToHighActive ? "Low to high Stop Sorting" : "Low to high Start Sorting"}
 </button>
      </div>
   
