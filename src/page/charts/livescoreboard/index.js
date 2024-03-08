@@ -60,8 +60,10 @@ const LiveVoteScoreboard = () => {
   useEffect(() => {
 
     console.log("check state",partyVotes,userListState.scoreBoardData)
-    if(partyVotes[0].votes===100 ){
+    if(partyVotes[0].votes===100 && userListState.scoreBoardData.length !=0 ){
       setPartyVotes(userListState.scoreBoardData)
+    }else{
+      setPartyVotes(parties)
     }
    
   }, [])
