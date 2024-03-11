@@ -31,9 +31,7 @@ const LiveVoteScoreboard = () => {
   const [highToLowActive, setHighToLowActive] = useState(false);
   const [lowToHighActive, setLowToHighActive] = useState(false);
   const userListState = useSelector((state) => state.partyData);
-  // const userCheck = useSelector((state) => state.user.userCheck);
   const dispatch = useDispatch();
-  console.log("check redux data ",userListState,parties[0].votes)
 
   const progressBarColors = [
     "#ff0000",
@@ -59,7 +57,6 @@ const LiveVoteScoreboard = () => {
 
   useEffect(() => {
 
-    console.log("check state",partyVotes,userListState.scoreBoardData)
     if(partyVotes[0].votes===100 && userListState.scoreBoardData.length !=0 ){
       setPartyVotes(userListState.scoreBoardData)
     }else{
@@ -76,11 +73,7 @@ const LiveVoteScoreboard = () => {
       }));
       setPartyVotes(updatedPartyVotes);
       dispatch(setScoreBoardState(updatedPartyVotes))
-      // if(userListState.scoreBoardData[0].votes !=100){
-
-      // }
-      console.log("update data list",updatedPartyVotes)
-
+    
       // Update sortedPartyVotes if sorting is active
       if (highToLowActive) {
         const sortedVotes = [...updatedPartyVotes].sort(
